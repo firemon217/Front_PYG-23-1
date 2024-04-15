@@ -1,31 +1,31 @@
-<script>
-export default{
-
-data()
-{
-    return{
-    }
-},
-
-components:
-{
-
-},
-
-methods:
-{
-    
-}
-
-}
-
-</script>
-
 <template>
     <div id="App">
         <router-view></router-view>
     </div>
 </template>
+
+<script>
+    export default{
+    
+    data()
+    {
+        return{
+        }
+    },
+    
+    components:
+    {
+    
+    },
+    
+    methods:
+    {
+        
+    }
+    
+    }
+    
+    </script>
 
 <style>
     #App

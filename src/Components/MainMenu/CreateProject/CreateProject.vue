@@ -35,7 +35,7 @@
         {
             DisactiveCreateProject()
             {
-                this.$emit("disactiveCreateProject", true)
+                this.$emit("disactiveCreateProject")
             }
         }
     }
