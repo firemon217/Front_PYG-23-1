@@ -10,7 +10,7 @@
                     <my-input placeholder="Пароль" name="Password"/> <!-- Поле для ввода пароля -->
                     <my-button type="button" @click="SwitchMainMenu"> <!-- Кнопка, для отправки формы -->
                         <span>Войти</span> <!-- Текст кнопки -->
-                        <a href="/MainMenu" style="display: none"></a>
+                        <a href="/" style="display: none"></a>
                     </my-button>
                 </form>
                 <span> <!-- Текстовый блок для ссылка на регистрацию -->

@@ -2,6 +2,8 @@ import Authorization from "@/Components/EnterAccount/Authorization/Authorization
 import Registration from "@/Components/EnterAccount/Registration/Registration.vue"
 import MainMenu from "@/Components/MainMenu/MainMenu.vue"
 import EnterAccount from "@/Components/EnterAccount/EnterAccount.vue"
+import Profile from "@/Components/Profile/Profile.vue"
+import Project from "@/Components/Project/Project.vue"
 import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
@@ -28,8 +30,16 @@ const routes = [
         component: Registration
     },
     {
-        path: '/MainMenu',
+        path: '/',
         component: MainMenu
+    },
+    {
+        path: '/Profile',
+        component: Profile
+    },
+    {
+        path: '/Project',
+        component: Project
     },
 ]
 

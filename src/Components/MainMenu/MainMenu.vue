@@ -3,10 +3,11 @@
         <header>
             <div>
                 <div class="Logo">
-                    <img src="@/Assets/Pictures/Logo.jpg"/>TeamFinder
+                    <img src="@/Assets/Pictures/MainMenu/Logo.jpg"/>TeamFinder
                 </div>
                 <div class="MainProfile">
-                    <img src="@/Assets/Pictures/EmptyPhotoProfile.jpg" /><a>Мой профиль</a>
+                    <img src="@/Assets/Pictures/MainMenu/EmptyPhotoProfile.jpg"/><a href="/Profile">Мой профиль</a>/
+                    <a href="/EnterAccount">Авторизоваться</a>
                 </div>
             </div>
         </header>
@@ -15,10 +16,10 @@
         </aside>
         <main>
             <div>
-                <img src="@/Assets/Pictures/MainPhoto.jpg"/>
-                <button @click="OpenCreateProject">
+                <img src="@/Assets/Pictures/MainMenu/MainPhoto.png"/>
+                <my-button @click="OpenCreateProject">
                     Создать проект
-                </button>
+                </my-button>
             </div>
         </main>
         <create-project v-if="IsCreateProjectOpen" @disactiveCreateProject="CloseCreateProject"></create-project>
@@ -70,7 +71,7 @@
     header
     {
         width: 100%;
-        height: 120px;
+        height: 11%;
         position: relative;
         background-color: #4e7d49;
     }
@@ -78,9 +79,9 @@
     header> div
     {
         width: 95%;
-        height: 70px;
+        height: 54%;
         position: relative;
-        top: calc(50% - 35px);
+        top: 23%;
         margin: auto;
         display: flex;
         justify-content: space-between;
@@ -89,42 +90,41 @@
     .Logo
     {
         width: 35%;
-        height: 70px;
+        height: 100%;
         position: relative;
         display: flex;
         align-items: center;
-        font-size: 30px;
+        font-size: 2em;
     }
 
     .Logo> img
     {
-        height: 70px;
-        width: 70px;
-        border-radius: 35px;
+        height: 100%;
+        border-radius: 50%;
         margin-right: 20px;
     }
 
     .MainProfile
     {
         width: 35%;
-        height: 70px;
+        height: 100%;
         position: relative;
         display: flex;
         justify-content: right;
         align-items: center;
+        font-size: 1.5em;
     }
 
     .MainProfile> img
     {
-        height: 70px;
-        width: 70px;
-        border-radius: 35px;
+        height: 100%;
+        border-radius: 50%;
         margin-right: 20px;
     }
 
     .MainProfile> a
-    {
-        font-size: 27px;
+    {   
+        color: white;
         position: relative;
         text-decoration: underline;
     }
@@ -132,16 +132,16 @@
     main
     {
         width: 100%;
-        height: calc(100vh - 120px);
+        height: 89%;
     }
 
     main> div
     {
-        width: 500px;
-        height: 700px;
+        width: 26%;
+        height: 73%;
         position: relative;
-        top: calc(50% - 350px);
-        left: calc(50% - 250px);
+        top: 13.5%;
+        left: 37%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -149,37 +149,16 @@
 
     main> div> img
     {
-        width: 500px;
-        height: 550px;
+        width: 100%;
+        height: 79%;
     }
 
     main> div> button
     {
-        height: 60px;
-        width: 400px;
-        justify-content: space-between;
-        background-color: #588d52;
-        font-size: 24px;
-        border: 0;
-        box-shadow: 0 20px 20px rgba(120, 120, 120, 0.4);
-		transition-duration: 0.4s;
-        color: white;
-        font-size: 25px;
-        border-radius: 20px;
+        height: 8.5%;
+        width: 95%;
         margin: auto;
-    }  
-
-    main> div> button:hover
-    {
-        background-color: #366131;
-    }
-
-    main> div> button:Focus
-    {
-        background-color: #475c45;
-        transition-duration: 0.1s;
-        box-shadow: 0 0 15px 5px rgba(70, 70, 70, 0.8);
-    }
-
+        font-size: 1.5em;
+    } 
 
 </style>

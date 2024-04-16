@@ -5,43 +5,70 @@
 				Регистрация <!-- Заголовок окна -->
 			</h1>
 			<form method="post"> <!-- Форма, передающая значения на обработку -->
-				<input placeholder="Логин" name="login"/> <!-- Поле для ввода логина -->
-				<input placeholder="Email" name="e-mail"/> <!-- Поле для ввода email -->
-				<input placeholder="Пароль" name="Password"/> <!-- Поле для ввода пароля -->
+				<my-input placeholder="Логин" name="login"/> <!-- Поле для ввода логина -->
+				<my-input placeholder="Email" name="e-mail"/> <!-- Поле для ввода email -->
+				<my-input placeholder="Пароль" name="Password"/> <!-- Поле для ввода пароля -->
 				<span> <!-- Текстовый блок для ссылка на регистрацию -->
-					<span><span class=""></span><input style="display:none" type="checkbox" /> </span> Согласие на обработку персональных данных
+					<span @click="OnClickCheckBox"><span class="OnCheckBox" v-if="OnCheckBox"></span><input style="display:none" type="checkbox" /> </span> Согласие на обработку персональных данных
 				</span>
-				<button> <!-- Кнопка, для отправки формы -->
+				<my-button> <!-- Кнопка, для отправки формы -->
 					<span>Подтвердить</span> <!-- Текст кнопки -->
-				</button>
+				</my-button>
 			</form>
 		</div>
 	</div>
 </template>
 
 <script>
+	export default
+	{
+		methods:
+		{
+			OnClickCheckBox()
+			{
+				if(this.OnCheckBox == true)
+				{
+					this.OnCheckBox = false;
+					document.querySelector("form> span> span> input").checked = false;
+				}
+				else
+				{
+					this.OnCheckBox = true;
+					document.querySelector("form> span> span> input").checked = true;
+				}
+			}
+		},
 
+		
+		data()
+		{
+			return{
+				OnCheckBox: false,
+			}
+		},
+	}
 </script>
 
 <style scoped>
 #WindowRegistration
 	{
-		width: 620px;
-		height: 550px;
+		width: 32%;
+		height: 52vh;
 		background-color: #edeae2;
 		border: 3px solid #294c26;
 		border-radius: 25px;
 		position: relative;
-		top: calc(50% - 275px);
-		left: calc(50% - 310px);
+		top: 24.5vh;
+		left: 34%;
 	}
 
 		#WindowRegistration> div
 		{
-			width: 430px;
+			width: 75%;
+			height: 80%;
 			position: relative;
-			left: calc(50% - 215px);
-			top: 70px;
+			left: 12.5%;
+			top: 13%;
 			display: flex;
 			flex-direction: column;
 		}
@@ -51,43 +78,30 @@
 			position: relative;
 			text-align: center;
 			color: #2d5728;
-			font-size: 50px;
-			margin-bottom: 40px;
+			font-size: 3em;
+			margin-bottom: 7%;
 			font-weight: 500;
 		}
 
 		#WindowRegistration> div> form
 		{
 			width: 100%;
-			height: 310px;
+			height: 73%;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 		}
 
-		#WindowRegistration> div> form> input
-		{
-			width: 100%;
-			height: 45px;
-			background-color: #588d52;
-			border: none;
-			border-radius: 23px;
-			color: white;
-			padding-left: 25px;
-			font-size: 23px;
-			box-shadow: 0 20px 20px rgba(120, 120, 120, 0.4);
-		}
-
-		input::-webkit-input-placeholder { color: #c9dec6; }
-
 		#WindowRegistration> div> form> span
 		{
-			width: 430px;
-			height: 40px;
+			width: 100%;
+			height: 12%;
 			color: #2d5728;
-			font-size: 18px;
+			font-size: 1.2em;
 			position: relative;
 			padding-left: 25px;
+			display: flex;
+			align-items: center;
 		}
 
 		#WindowRegistration> div> form> span> span
@@ -97,7 +111,6 @@
 			position: absolute;		
 			border: 2px solid #2d5728;
 			left: 0;
-			top: calc(50% - 7.5px);
 		}
 
 		#WindowRegistration> div> form> span> span> .OnCheckBox
@@ -124,28 +137,13 @@
 			top: -1px;
 		}
 
-		#WindowRegistration> div> form> button
+		form> button
 		{
-			width: 100%;
-			height: 45px;
-			background-color: #588d52;
-			border: none;
-			border-radius: 23px;
-			color: white;
-			font-size: 23px;
-			box-shadow: 0 20px 20px rgba(120, 120, 120, 0.4);
-			transition-duration: 0.4s;
+			height: 15%;
 		}
 
-		#WindowRegistration> div> form> button:hover
+		form> input
 		{
-			background-color: #366131;
+			height: 15%;
 		}
-
-		#WindowRegistration> div> form> button:focus
-		{
-			background-color: #475c45;
-			transition-duration: 0.1s;
-			box-shadow: 0 0 15px 5px rgba(70, 70, 70, 0.8);
-        }
 </style>

@@ -25,7 +25,7 @@ methods:
 <template>
 	<div id="EnterAccount">
 		<div id ="Chuvachanger"> <!-- Полусфера фона -->
-			<img src="@/Assets/Pictures/Chuvachanger.jpg">
+			<img src="@/Assets/Pictures/EnterAccount/Chuvachanger.jpg">
 		</div>
 		<div id ="HalfSphere"> <!-- Полусфера фона -->
 
