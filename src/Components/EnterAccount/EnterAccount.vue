@@ -41,11 +41,6 @@ methods:
 		position: relative;
 	}
 
-	.disactive
-	{
-		display: none
-	}
-
 	#HalfSphere
 	{
 		width: 47%;
@@ -58,8 +53,7 @@ methods:
 
 		#Chuvachanger
 		{
-			width: 582px;
-			height: 504px;
+			width: 30%;
 			position: absolute;
 			bottom: 0;
 			right: 0;

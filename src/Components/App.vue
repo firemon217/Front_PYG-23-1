@@ -57,6 +57,7 @@
         width: 100%;
         height: 100%;
         position: relative;
+        font-size: 16px;
     }
 
         #app
@@ -72,4 +73,12 @@
             position: relative;
             background-color: #fefbf3;
         }
+
+    @media (max-width: 1526px)
+    {
+        html
+        {
+            font-size: 13px;
+        }
+    }
 </style>
