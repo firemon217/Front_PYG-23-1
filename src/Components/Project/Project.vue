@@ -11,46 +11,57 @@
                 </div>
             </div>
         </header>
-        <main>
-            <aside :class="{aside__hidden: IsOpenAside}">
-                <div class="aside__button-slider" @click="OpenAside"></div>
-                <div class="aside__header">
-                    Название проекта
-                </div>  
-                <div class="aside__list-task">
-                    <div class="list-task__create">
+        <aside :class="{aside__hidden: !IsOpenAside}">
+            <div class="aside__button-slider" @click="OpenAside"><div class="button-slider__arrow" :class="{'button-slider__arrow--slide': !IsOpenAside}"></div></div>
+            <div class="aside__header">
+                Название проекта
+            </div>  
+            <div class="aside__list-task">
+                <div class="list-task__create" @click="OpenNewTask">
+                    <span>
                         <span>
-                            <span>
-    
-                            </span>
+
                         </span>
-                        Добавить задачу
+                    </span>
+                    Добавить задачу
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div class="tasks">
+                <div class="task">
+                    <div>
+                        <div class="task__name">
+                            Задача 1
+                        </div>
+                        <div class="task__information">
+                            <p>   От кого: </p>
+                            <p>    Кому: </p>
+                            <p>   Срок выполнения: </p>
+                            <p>    Описание задачи: </p>
+                        </div>
+                        <span>
+
+                        </span>
                     </div>
-                </div>
-            </aside>
-            <div class="tasks" :class="{tasks_slide: IsSlideMain}">
-                <div class="task">
-
-                </div>
-                <div class="task">
-
-                </div>
-                <div class="task">
-
                 </div>
             </div>
         </main>
     </div>
+    <new-task v-if="IsOpenNewTask" @closeNewTask="CloseNewTask"></new-task>
 </template>
 
 <script>
+
+    import NewTask from "@/Components/Project/NewTask/NewTask.vue"
+
  export default
     {
         data()
         {
             return{
-                IsOpenAside: false,
-                IsSlideMain: false
+                IsOpenAside: true,
+                IsOpenNewTask: false
             }
         },
 
@@ -61,28 +72,38 @@
                 if(this.IsOpenAside == true)
                 {
                     this.IsOpenAside = false
-                    this.IsSlideMain = false
                 }
                 else
                 {
                     this.IsOpenAside = true
-                    this.IsSlideMain = true
                 }
             },
+            OpenNewTask()
+            {
+                this.IsOpenAside = false;
+                this.IsOpenNewTask = true;
+            },
 
+            CloseNewTask()
+            {
+                this.IsOpenAside = true;
+                this.IsOpenNewTask = false;
+            },
              
         },
+
+        components:
+        {
+            NewTask
+        }
     }
 </script>
 
 <style scoped>
-    * 
-    {
-        color: white;
-    }
 
     .body
     {
+        color: white;
         width: 100%;
         height: 100%;
         position: relative;
@@ -152,23 +173,52 @@
     aside
     {
         width: 20%;
-        min-height: 100%;
-        position: relative;
+        min-height: 89%;
+        max-height: m;
+        position: absolute;
         border-right: 4px solid #477243;
         transition-duration: 0.4s;
         color: black;
         float: left;
         margin-right: 5%;
+        background-color: #fefbf3;
+        z-index: 1;
     }
 
     .aside__button-slider
     {
-        display: block;
         width: 50px;
         height: 30px;
         background-color: #477243;
         position: absolute;
         right: -50px;
+    }
+
+    .button-slider__arrow 
+    {
+        position: relative;
+        width: 40px;
+        height: 20px;
+        background-color: white;
+        clip-path: polygon(0 45%,
+                            90% 45%,
+                            70% 0,
+                            75% 0,
+                            100% 50%,
+                            75% 100%,
+                            70% 100%,
+                            90% 55%,
+                            0 55%
+        );
+        transform: rotate(180deg);
+        top: calc(50% - 10px);
+        left: calc(50% - 20px);
+        transition-duration: 0.4s;
+    }
+
+    .button-slider__arrow--slide
+    {
+        transform: rotate(0deg);
     }
 
     .aside__hidden
@@ -208,7 +258,7 @@
         align-items: center;
         position: relative;
         font-size: 1.1em;
-        font-weight: 100;
+        font-weight: 300;
         color: black;
     }
 
@@ -249,40 +299,65 @@
 
     main
     {
-        width: 100%;
+        width: 90%;
         height: 89%;
         position: relative;
         justify-content: space-between;
+        left: 5%;
     }
 
     .tasks
     {
         display: grid;
-        width: 70%;
+        width: 100%;
         min-height: 30%;
         position: relative;
         border-radius: 25px;
         transition-duration: 0.4s;
-        grid-template-columns: repeat(2, 40%);
-        grid-template-rows: repeat(300px);
-        column-gap: 20%;
-        row-gap: 30px;
+        grid-template-columns: repeat(3, 30%);
+        column-gap: 5%;
+        row-gap: 7.5%;
         top: 20px;
-    }
-
-    .tasks_slide
-    {
-        transform: scaleX(1.3) translate(-10%);
-        grid-template-columns: repeat(3, 31%);
-        column-gap: 3%;
     }
 
     .task
     {
         width: 100%;
-        height: 30%;
+        height: 300px;
         position: relative;
         border: 2px solid #477243;
+        border-radius: 25px;
+    }
+
+    .task> div
+    {
+        width: 90%;
+        height: 90%;
+        position: relative;
+        top: 4%;
+        left: 7%;
+        display: flex;
+        flex-direction: column;
+        color: #024601;
+    }
+
+    .task__name
+    {
+        font-size: 1.7em;
+        text-decoration: underline;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    .task__information
+    {
+        height: 70%;
+        font-size: 1.4em;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-weight: 500;
     }
 
     

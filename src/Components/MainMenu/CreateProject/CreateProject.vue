@@ -101,6 +101,7 @@
     #CreateProjectForm> div:nth-child(2)
     {
         margin-bottom: 5%;
+        height: 50%;
     }  
 
     #CreateProjectForm> div> h2
@@ -125,8 +126,8 @@
     {
         max-width: 72%;
         min-width: 72%;
-        max-height: 250px;
-        min-height: 140px;
+        max-height: 100%;
+        min-height: 40%;
         border: 0;
         padding-left: 3.5%;
         padding-right: 3.5%;
