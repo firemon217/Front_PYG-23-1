@@ -7,7 +7,7 @@
 			<form method="post"> <!-- Форма, передающая значения на обработку -->
 				<my-input placeholder="Логин" name="login"/> <!-- Поле для ввода логина -->
 				<my-input placeholder="Email" name="e-mail"/> <!-- Поле для ввода email -->
-				<my-input placeholder="Пароль" name="Password"/> <!-- Поле для ввода пароля -->
+				<my-input placeholder="Пароль" name="password"/> <!-- Поле для ввода пароля -->
 				<span> <!-- Текстовый блок для ссылка на регистрацию -->
 					<span @click="OnClickCheckBox"><span class="OnCheckBox" v-if="OnCheckBox"></span><input style="display:none" type="checkbox" /> </span> Согласие на обработку персональных данных
 				</span>

@@ -6,8 +6,8 @@
                     <img src="@/Assets/Pictures/MainMenu/Logo.jpg"/>TeamFinder
                 </div>
                 <div class="MainProfile">
-                    <img src="@/Assets/Pictures/MainMenu/EmptyPhotoProfile.jpg"/><a href="/Profile">Мой профиль</a>/
-                    <a href="/EnterAccount">Авторизоваться</a>
+                    <img src="@/Assets/Pictures/MainMenu/EmptyPhotoProfile.jpg"/><a href="/profile">Мой профиль</a>/
+                    <a href="/enteraccount">Авторизоваться</a>
                 </div>
             </div>
         </header>

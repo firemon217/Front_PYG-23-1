@@ -18,7 +18,7 @@
                         <textarea></textarea>
                     </div>
                     <div>
-                        <my-button type="button" @click="OpenProject">Готова!<a href="/Project"></a></my-button>
+                        <my-button type="button" @click="OpenProject">Готова!<a href="/project"></a></my-button>
                         <my-button type="button" @click="DisactiveCreateProject">Отмена</my-button>
                     </div>
                 </form>

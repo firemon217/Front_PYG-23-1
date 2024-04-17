@@ -14,7 +14,7 @@
                     </my-button>
                 </form>
                 <span> <!-- Текстовый блок для ссылка на регистрацию -->
-                    <span>Нет профиля?</span> <a href="/EnterAccount/Registration">Зарегистрироваться</a>
+                    <span>Нет профиля?</span> <a href="/enteraccount/registration">Зарегистрироваться</a>
                 </span>
             </div>
         </div>

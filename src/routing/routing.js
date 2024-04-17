@@ -8,25 +8,25 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
     {
-        path: '/EnterAccount',
+        path: '/enteraccount',
         component: EnterAccount,
         children: [
             {
-              path: '/EnterAccount',
+              path: '/enteraccount',
               component: Authorization,
             },
             {
-                path: '/EnterAccount/Registration',
+                path: '/enteraccount/registration',
                 component: Registration,
             },
           ]
     },
     {
-        path: '/EnterAccount',
+        path: '/enteraccount',
         component: Authorization
     },
     {
-        path: '/EnterAccount/Registrtion',
+        path: '/enteraccount/registrtion',
         component: Registration
     },
     {
@@ -34,11 +34,11 @@ const routes = [
         component: MainMenu
     },
     {
-        path: '/Profile',
+        path: '/profile',
         component: Profile
     },
     {
-        path: '/Project',
+        path: '/project',
         component: Project
     },
 ]
