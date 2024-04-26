@@ -1,20 +1,26 @@
 <template>
     <div id="WindowRegistration"> <!-- Окно авторизации -->
-		<div> <!-- Блок конкатыновки элементов -->
+		<div id="WindowRegistrationBlock"> <!-- Блок конкатыновки элементов -->
 			<h1>
 				Регистрация <!-- Заголовок окна -->
 			</h1>
-			<form method="post"> <!-- Форма, передающая значения на обработку -->
-				<my-input placeholder="Логин" name="login"/> <!-- Поле для ввода логина -->
-				<my-input placeholder="Email" name="e-mail"/> <!-- Поле для ввода email -->
-				<my-input placeholder="Пароль" name="password"/> <!-- Поле для ввода пароля -->
+			<div class="form" method="post"> <!-- Форма, передающая значения на обработку -->
+				<my-input placeholder="Логин" v-model="login" name="login"/> <!-- Поле для ввода логина -->
+				<my-input placeholder="Email" v-model="email" name="e-mail"/> <!-- Поле для ввода email -->
+				<my-input placeholder="Пароль" v-model="password" name="password"/> <!-- Поле для ввода пароля -->
 				<span> <!-- Текстовый блок для ссылка на регистрацию -->
 					<span @click="OnClickCheckBox"><span class="OnCheckBox" v-if="OnCheckBox"></span><input style="display:none" type="checkbox" /> </span> Согласие на обработку персональных данных
 				</span>
-				<my-button> <!-- Кнопка, для отправки формы -->
+				<my-button @click="Registration"> <!-- Кнопка, для отправки формы -->
 					<span>Подтвердить</span> <!-- Текст кнопки -->
 				</my-button>
-			</form>
+			</div>
+		</div>
+		<div class="error" v-if="error">
+			Ошибка
+			<my-button @click="error=false"> <!-- Кнопка, для отправки формы -->
+				<span>Close</span> <!-- Текст кнопки -->
+			</my-button>
 		</div>
 	</div>
 </template>
@@ -29,14 +35,43 @@
 				if(this.OnCheckBox == true)
 				{
 					this.OnCheckBox = false;
-					document.querySelector("form> span> span> input").checked = false;
+					document.querySelector(".form> span> span> input").checked = false;
 				}
 				else
 				{
 					this.OnCheckBox = true;
-					document.querySelector("form> span> span> input").checked = true;
+					document.querySelector(".form> span> span> input").checked = true;
+				}
+			},
+
+			Registration()
+			{
+				if(this.OnCheckBox)
+				{
+					if(this.email && this.login && this.password)
+					{
+						this.$store.state.login = this.login
+						this.$store.state.password = this.password
+						this.$store.state.email = this.email
+						this.$router.push("/enteraccount")
+					}
+					else
+					{
+						this.error = true;
+						this.login = ''
+						this.password = ''
+						this.email = ''
+					}
+				}
+				else
+				{
+					this.error = true;
+					this.login = ''
+					this.password = ''
+					this.email = ''
 				}
 			}
+
 		},
 
 		
@@ -44,6 +79,10 @@
 		{
 			return{
 				OnCheckBox: false,
+				login: '',
+				password: '',
+				email: '',
+				error: false
 			}
 		},
 	}
@@ -62,7 +101,7 @@
 		left: 34%;
 	}
 
-		#WindowRegistration> div
+		#WindowRegistrationBlock
 		{
 			width: 75%;
 			height: 80%;
@@ -73,7 +112,7 @@
 			flex-direction: column;
 		}
 
-		#WindowRegistration> div> h1
+		#WindowRegistrationBlock> h1
 		{
 			position: relative;
 			text-align: center;
@@ -83,7 +122,7 @@
 			font-weight: 500;
 		}
 
-		#WindowRegistration> div> form
+		#WindowRegistrationBlock> .form
 		{
 			width: 100%;
 			height: 73%;
@@ -92,7 +131,7 @@
 			justify-content: space-between;
 		}
 
-		#WindowRegistration> div> form> span
+		#WindowRegistrationBlock> .form> span
 		{
 			width: 100%;
 			height: 12%;
@@ -104,7 +143,7 @@
 			align-items: center;
 		}
 
-		#WindowRegistration> div> form> span> span
+		#WindowRegistrationBlock> .form> span> span
 		{
 			width: 15px;
 			height: 15px;
@@ -113,7 +152,7 @@
 			left: 0;
 		}
 
-		#WindowRegistration> div> form> span> span> .OnCheckBox
+		#WindowRegistrationBlock> .form> span> span> .OnCheckBox
 		{
 			width: 13px;
 			height: 13px;
@@ -137,13 +176,37 @@
 			top: -1px;
 		}
 
-		form> button
+		.form> button
 		{
 			height: 15%;
 		}
 
-		form> input
+		.form> input
 		{
 			height: 15%;
 		}
+
+	.error
+	{
+		width: 60%;
+		height: 60%;
+		background-color: #edeae2;
+		border: 4px solid #588d52;
+		border-radius: 25px;
+		position: absolute;
+		top: 20%;
+		left: 20%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.error> button
+	{
+		width: 80%;
+		height: 10%;
+		position: relative;
+		left: 10%;
+	}
 </style>

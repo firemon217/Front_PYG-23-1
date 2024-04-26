@@ -9,16 +9,16 @@
                         <h2>
                             Название:
                         </h2>
-                        <my-input />
+                        <my-input v-model="projectName"/>
                     </div>
                     <div>
                         <h2>
                             Описание:
                         </h2>
-                        <textarea></textarea>
+                        <textarea :value="projectDiscription"></textarea>
                     </div>
                     <div>
-                        <my-button type="button" @click="OpenProject">Готова!<a href="/project"></a></my-button>
+                        <my-button type="button" @click="OpenProject">Готова!</my-button>
                         <my-button type="button" @click="DisactiveCreateProject">Отмена</my-button>
                     </div>
                 </form>
@@ -38,7 +38,17 @@
 
             OpenProject()
             {
-                document.querySelector("#CreateProjectForm> div:nth-child(3) a").click()
+                this.$store.state.project.name = this.projectName
+                this.$store.state.project.discription = this.projectDiscription
+                this.$router.push('/project')
+            }
+        },
+
+        data()
+        {
+            return{
+                projectName: '',
+                projectDiscription: ''
             }
         }
     }

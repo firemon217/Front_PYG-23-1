@@ -1,20 +1,10 @@
 <template>
     <div class="body">
-        <header>
-            <div>
-                <div class="Logo">
-                    <img src="@/Assets/Pictures/MainMenu/Logo.jpg"/>TeamFinder
-                </div>
-                <div class="MainProfile">
-                    <img src="@/Assets/Pictures/MainMenu/EmptyPhotoProfile.jpg"/><a href="/Profile">Мой профиль</a>/
-                    <a href="/EnterAccount">Авторизоваться</a>
-                </div>
-            </div>
-        </header>
+        <my-header></my-header>
         <aside :class="{aside__hidden: !IsOpenAside}">
             <div class="aside__button-slider" @click="OpenAside"><div class="button-slider__arrow" :class="{'button-slider__arrow--slide': !IsOpenAside}"></div></div>
             <div class="aside__header">
-                Название проекта
+                {{$store.state.project.name}}
             </div>  
             <div class="aside__list-task">
                 <div class="list-task__create" @click="OpenNewTask">
@@ -107,67 +97,6 @@
         width: 100%;
         height: 100%;
         position: relative;
-    }
-
-    header
-    {
-        width: 100%;
-        height: 11%;
-        position: relative;
-        background-color: #4e7d49;
-    }
-
-    header> div
-    {
-        width: 95%;
-        height: 54%;
-        position: relative;
-        top: 23%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .Logo
-    {
-        width: 35%;
-        height: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        font-size: 2em;
-    }
-
-    .Logo> img
-    {
-        height: 100%;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-
-    .MainProfile
-    {
-        width: 35%;
-        height: 100%;
-        position: relative;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        font-size: 1.5em;
-    }
-
-    .MainProfile> img
-    {
-        height: 100%;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-
-    .MainProfile> a
-    {   
-        color: white;
-        position: relative;
-        text-decoration: underline;
     }
 
     aside

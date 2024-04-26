@@ -1,27 +1,17 @@
 <template>
     <div class="body">
-        <header>
-            <div>
-                <div class="Logo">
-                    <img src="@/Assets/Pictures/MainMenu/Logo.jpg"/>TeamFinder
-                </div>
-                <div class="MainProfile">
-                    <img src="@/Assets/Pictures/MainMenu/EmptyPhotoProfile.jpg"/><a href="/profile">Мой профиль</a>/
-                    <a href="/enteraccount">Авторизоваться</a>
-                </div>
-            </div>
-        </header>
+        <my-header></my-header>
         <div class="popup" v-if="!IsOpenUpdateProfileModal">
             <div class="popup-content">
                 <img src="@/Assets/Pictures/Profile/account_big.png" alt="account" title="account" />
                 <div>
-                    <div>Логин:</div>
-                    <div>Че:</div>
-                    <div>Теги:</div>
-                    <div>О себе:</div>
+                    <div>Логин: {{$store.state.login}}</div>
+                    <div>e-mail: {{$store.state.email}}</div>
+                    <div>Теги: {{$store.state.tags}}</div>
+                    <div>О себе: {{$store.state.aboutSelf}}</div>
                     <my-button @click="OpenUpdateProfileModal">Редактировать</my-button>
                 </div>
-                <a class="back_link" href="/">Назад</a>
+                <a class="back_link" @click="$router.push('/')">Назад</a>
             </div>
         </div>
         <div class="robo">
@@ -69,68 +59,6 @@
     {
         height: 100vh;
         position: relative;
-    }
-
-    header
-    {
-        width: 100%;
-        height: 11%;
-        position: relative;
-        background-color: #4e7d49;
-        color: white;
-    }
-
-    header> div
-    {
-        width: 95%;
-        height: 54%;
-        position: relative;
-        top: 23%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .Logo
-    {
-        width: 35%;
-        height: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        font-size: 2em;
-    }
-
-    .Logo> img
-    {
-        height: 100%;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-
-    .MainProfile
-    {
-        width: 35%;
-        height: 100%;
-        position: relative;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        font-size: 1.5em;
-    }
-
-    .MainProfile> img
-    {
-        height: 100%;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-
-    .MainProfile> a
-    {   
-        color: white;
-        position: relative;
-        text-decoration: underline;
     }
 
     .popup

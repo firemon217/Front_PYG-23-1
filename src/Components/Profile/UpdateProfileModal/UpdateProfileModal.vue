@@ -1,32 +1,29 @@
 <template>
-    <form class="form__update">
+    <div class="form__update">
         <input type="hidden" name="update">
         <div class="form__update--content">
             <div class="form__update--div">
                 <label for="login" class="form__update--label">Логин:</label>
-                <my-input type="text" id="login" name="login" class="form__update--input" />
+                <my-input type="text" id="login" name="login" class="form__update--input" v-model="login"/>
             </div>
             <div class="form__update--div">
                 <label for="password" class="form__update--label">Пароль:</label>
-                <my-input type="text" id="password" name="password" class="form__update--input" />
+                <my-input type="text" id="password" name="password" class="form__update--input" v-model="password"/>
             </div>
             <div class="form__update--div">
                 <label for="tags" class="form__update--label">Теги:</label>
-                <my-input type="text" id="tags" name="tags" class="form__update--input" />
+                <my-input type="text" id="tags" name="tags" class="form__update--input" v-model="tags"/>
             </div>
             <div class="form__update--div">
                 <label for="about" class="form__update--label">О себе:</label>
-                <textarea id="about" name="about" cols="30" rows="10" class="form__update--about"></textarea>
+                <textarea id="about" name="about" cols="30" rows="10" class="form__update--about" v-model="aboutSelf"></textarea>
             </div>
             <div class="buttons">
-                <my-button type="submit" id="send">Сохранить</my-button>
+                <my-button @click="UpdateProfile" id="send">Сохранить</my-button>
                 <my-button type="reset" @click="CloseUpdateProfileModal">Отмена</my-button>
             </div> 
         </div>       
-        <button class="close">
-            <span></span>
-        </button>
-    </form>
+    </div>
 </template>
 
 <script>
@@ -37,8 +34,39 @@
             CloseUpdateProfileModal()
             {
                 this.$emit("closeUpdateProfileModal")
+            },
+
+            UpdateProfile()
+            {
+                if(this.login)
+                {
+                    this.$store.state.login = this.login
+                }
+                if(this.password)
+                {
+                    this.$store.state.password = this.password
+                }
+                if(this.tags)
+                {
+                    this.$store.state.tags = this.tags
+                }
+                if(this.aboutSelf)
+                {
+                    this.$store.state.aboutSelf = this.aboutSelf
+                }
+                this.$emit("closeUpdateProfileModal")
             }
-       }
+       },
+
+       data()
+		{
+			return{
+				login: '',
+				password: '',
+                tags: '',
+                aboutSelf: '',
+			}
+		},
     }
 </script>
 
