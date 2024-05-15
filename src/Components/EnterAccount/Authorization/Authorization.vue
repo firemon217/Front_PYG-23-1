@@ -17,7 +17,7 @@
                 </span>
             </div>
 			<div class="error" v-if="error">
-				Ошибка
+				{{this.errorText}}
 				<my-button @click="error=false"> <!-- Кнопка, для отправки формы -->
 					<span>Close</span> <!-- Текст кнопки -->
 				</my-button>
@@ -41,6 +41,7 @@
 					this.error = true
 					this.login = ''
 					this.password = ''
+					this.errorText = "Введенные логин или пароль не совпадают"
 				}
             }
         },
@@ -50,7 +51,8 @@
 			return{
 				login: '',
 				password: '',
-				error: false
+				error: false,
+				errorText: ""
 			}
 		},
     }
@@ -142,6 +144,7 @@
 			flex-direction: column;
 			justify-content: center;
 			text-align: center;
+			font-size: 1.2em;
 		}
 
 		.error> button
@@ -150,5 +153,6 @@
 			height: 10%;
 			position: relative;
 			left: 10%;
+			top: 20%;
 		}
 </style>

@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="error" v-if="error">
-			Ошибка
+			{{this.errorText}}
 			<my-button @click="error=false"> <!-- Кнопка, для отправки формы -->
 				<span>Close</span> <!-- Текст кнопки -->
 			</my-button>
@@ -48,19 +48,48 @@
 			{
 				if(this.OnCheckBox)
 				{
-					if(this.email && this.login && this.password)
-					{
-						this.$store.state.login = this.login
-						this.$store.state.password = this.password
-						this.$store.state.email = this.email
-						this.$router.push("/enteraccount")
-					}
-					else
+					if(!this.login)
 					{
 						this.error = true;
 						this.login = ''
 						this.password = ''
 						this.email = ''
+						this.errorText = "Введите логин"
+						return
+					}
+					if(!this.password)
+					{
+						this.error = true;
+						this.login = ''
+						this.password = ''
+						this.email = ''
+						this.errorText = "Введите пароль"
+						return
+					}
+					if(!this.email)
+					{
+						this.error = true;
+						this.login = ''
+						this.password = ''
+						this.email = ''
+						this.errorText = "Введите e-mail"
+						return
+					}
+					if(this.password.length < 8)
+					{
+						this.error = true;
+						this.login = ''
+						this.password = ''
+						this.email = ''
+						this.errorText = "Пароль меньше 8 символов"
+						return
+					}
+					else
+					{
+						this.$store.state.login = this.login
+						this.$store.state.password = this.password
+						this.$store.state.email = this.email
+						this.$router.push("/enteraccount")
 					}
 				}
 				else
@@ -69,6 +98,7 @@
 					this.login = ''
 					this.password = ''
 					this.email = ''
+					this.errorText = "Вы не подтвердили согласие"
 				}
 			}
 
@@ -82,7 +112,8 @@
 				login: '',
 				password: '',
 				email: '',
-				error: false
+				error: false,
+				errorText: ""
 			}
 		},
 	}
@@ -200,6 +231,7 @@
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
+		font-size: 1.2em;
 	}
 
 	.error> button
@@ -208,5 +240,6 @@
 		height: 10%;
 		position: relative;
 		left: 10%;
+		top: 20%;
 	}
 </style>
